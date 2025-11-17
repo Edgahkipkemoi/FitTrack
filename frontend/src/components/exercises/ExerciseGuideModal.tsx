@@ -4,11 +4,7 @@ import { Exercise } from '@/types';
 import Button from '@/components/ui/Button';
 
 interface ExerciseGuideModalProps {
-  exercise: Exercise & {
-    instructions?: string[];
-    videoUrl?: string;
-    tips?: string[];
-  };
+  exercise: Exercise;
   onClose: () => void;
   onAddToWorkout?: () => void;
 }
@@ -107,9 +103,9 @@ const ExerciseGuideModal: React.FC<ExerciseGuideModalProps> = ({ exercise, onClo
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">How to Perform</h3>
             {typeof exercise.instructions === 'string' ? (
               <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{exercise.instructions}</p>
-            ) : (
+            ) : Array.isArray(exercise.instructions) ? (
               <ol className="space-y-2">
-                {exercise.instructions.map((step, index) => (
+                {exercise.instructions.map((step: string, index: number) => (
                   <li key={index} className="flex items-start space-x-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 text-white text-sm flex items-center justify-center">
                       {index + 1}
@@ -118,7 +114,7 @@ const ExerciseGuideModal: React.FC<ExerciseGuideModalProps> = ({ exercise, onClo
                   </li>
                 ))}
               </ol>
-            )}
+            ) : null}
           </div>
         )}
 

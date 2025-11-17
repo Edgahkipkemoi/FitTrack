@@ -59,11 +59,14 @@ export interface RegisterData {
 // Exercise types
 export interface Exercise {
     _id: string;
+    id: string;
     name: string;
     category: 'strength' | 'cardio' | 'flexibility' | 'sports' | 'other';
     muscleGroups: string[];
-    equipment?: string[];
-    instructions?: string;
+    equipment: string[];
+    instructions: string | string[];
+    tips?: string[];
+    videoUrl?: string;
     difficulty: 'beginner' | 'intermediate' | 'advanced';
     isCustom: boolean;
     createdBy?: string | User;

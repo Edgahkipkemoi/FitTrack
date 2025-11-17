@@ -15,7 +15,7 @@ const ExercisesPage: React.FC = () => {
   const [editingExercise, setEditingExercise] = useState<Exercise | null>(null);
   const queryClient = useQueryClient();
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['exercises', searchTerm, category, difficulty],
     queryFn: async () => {
       try {
@@ -265,7 +265,7 @@ const ExerciseModal: React.FC<ExerciseModalProps> = ({ exercise, onClose }) => {
     category: exercise?.category || 'strength',
     muscleGroups: exercise?.muscleGroups || [],
     equipment: exercise?.equipment || [],
-    instructions: exercise?.instructions || '',
+    instructions: typeof exercise?.instructions === 'string' ? exercise.instructions : Array.isArray(exercise?.instructions) ? exercise.instructions.join('\n') : '',
     difficulty: exercise?.difficulty || 'beginner',
   });
 
