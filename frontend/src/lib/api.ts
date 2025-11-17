@@ -124,7 +124,6 @@ export const userAPI = {
     unfollowUser: (userId: string) => apiClient.delete(`/users/${userId}/follow`),
     getFollowers: (userId: string, params?: any) => apiClient.get(`/users/${userId}/followers`, params),
     getFollowing: (userId: string, params?: any) => apiClient.get(`/users/${userId}/following`, params),
-    getDashboard: () => apiClient.get('/users/dashboard'),
 };
 
 // Exercise API
