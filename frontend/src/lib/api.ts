@@ -8,7 +8,7 @@ import { ApiResponse } from '@/types';
 
 // Create axios instance with base configuration
 const api: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+    baseURL: import.meta.env.VITE_API_URL || 'https://fittrack-backend-ne0e.onrender.com/api',
     timeout: 10000,
     withCredentials: true, // Important for cookies
     headers: {
